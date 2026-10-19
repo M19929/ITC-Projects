@@ -1,0 +1,114 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace OnlineCourseManagement
+{
+    public class Course
+    {
+        public int Id { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+    }
+
+    public class Student
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+    }
+
+    public class Enrollment
+    {
+        public int Id { get; set; }
+        public int StudentId { get; set; }
+        public int CourseId { get; set; }
+        public DateTime EnrollmentDate { get; set; } = DateTime.Now;
+    }
+
+    public interface ICourseRepository
+    {
+        Course? GetById(int id);
+        void Add(Course course);
+    }
+
+    public interface IEnrollmentRepository
+    {
+        void Add(Enrollment enrollment);
+        bool IsEnrolled(int studentId, int courseId);
+    }
+
+    public class InMemoryCourseRepository : ICourseRepository
+    {
+        private readonly List<Course> _courses = new();
+
+        public Course? GetById(int id) => _courses.FirstOrDefault(c => c.Id == id);
+        public void Add(Course course) => _courses.Add(course);
+    }
+
+    public class InMemoryEnrollmentRepository : IEnrollmentRepository
+    {
+        private readonly List<Enrollment> _enrollments = new();
+
+        public void Add(Enrollment enrollment) => _enrollments.Add(enrollment);
+
+        public bool IsEnrolled(int studentId, int courseId)
+        {
+            return _enrollments.Any(e => e.StudentId == studentId && e.CourseId == courseId);
+        }
+    }
+
+    public class EnrollmentService
+    {
+        private readonly ICourseRepository _courseRepo;
+        private readonly IEnrollmentRepository _enrollmentRepo;
+
+        public EnrollmentService(ICourseRepository courseRepo, IEnrollmentRepository enrollmentRepo)
+        {
+            _courseRepo = courseRepo;
+            _enrollmentRepo = enrollmentRepo;
+        }
+
+        public bool Enroll(Student student, int courseId)
+        {
+            var course = _courseRepo.GetById(courseId);
+            if (course == null)
+            {
+                return false;
+            }
+
+            if (_enrollmentRepo.IsEnrolled(student.Id, courseId))
+            {
+                return false;
+            }
+
+            var enrollment = new Enrollment
+            {
+                Id = new Random().Next(100, 999),
+                StudentId = student.Id,
+                CourseId = course.Id
+            };
+
+            _enrollmentRepo.Add(enrollment);
+            return true;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ICourseRepository courseRepo = new InMemoryCourseRepository();
+            IEnrollmentRepository enrollmentRepo = new InMemoryEnrollmentRepository();
+
+            var enrollmentService = new EnrollmentService(courseRepo, enrollmentRepo);
+
+            var course = new Course { Id = 1, Title = "OOP & SOLID", Price = 100 };
+            courseRepo.Add(course);
+
+            var student = new Student { Id = 101, Name = "Haneen" };
+
+            bool isSuccess = enrollmentService.Enroll(student, 1);
+            Console.WriteLine(isSuccess);
+        }
+    }
+}

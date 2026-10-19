@@ -1,0 +1,83 @@
+﻿using System;
+
+namespace OnlineCourseManagement
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+        }
+    }
+
+    public enum EnrollmentStatus
+    {
+        Active,
+        Completed,
+        Cancelled
+    }
+
+    public class Enrollment
+    {
+        public int Id { get; set; }
+
+        public int StudentId { get; set; }
+        public Student? Student { get; set; }
+
+        public int CourseId { get; set; }
+        public Course? Course { get; set; }
+
+        public DateTime EnrolledAt { get; set; } = DateTime.UtcNow;
+        public EnrollmentStatus Status { get; set; } = EnrollmentStatus.Active;
+        public double ProgressPercentage { get; set; } = 0.0;
+
+        public void UpdateProgress(double progress)
+        {
+            if (progress < 0 || progress > 100)
+                throw new ArgumentOutOfRangeException(nameof(progress));
+
+            ProgressPercentage = progress;
+            if (ProgressPercentage >= 100.0)
+            {
+                ProgressPercentage = 100.0;
+                Status = EnrollmentStatus.Completed;
+            }
+        }
+
+        public void CancelEnrollment()
+        {
+            Status = EnrollmentStatus.Cancelled;
+        }
+    }
+
+    public class Review
+    {
+        public int Id { get; set; }
+
+        public int StudentId { get; set; }
+        public Student? Student { get; set; }
+
+        public int CourseId { get; set; }
+        public Course? Course { get; set; }
+
+        private int _rating;
+        public int Rating
+        {
+            get => _rating;
+            set
+            {
+                if (value < 1 || value > 5)
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                _rating = value;
+            }
+        }
+
+        public string? Comment { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        public void UpdateReview(int newRating, string? newComment)
+        {
+            Rating = newRating;
+            Comment = newComment;
+        }
+    }
+}
