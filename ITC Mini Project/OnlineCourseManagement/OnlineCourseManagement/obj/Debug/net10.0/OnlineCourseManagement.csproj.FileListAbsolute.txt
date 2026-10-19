@@ -1,0 +1,16 @@
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\bin\Debug\net10.0\OnlineCourseManagement.exe
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\bin\Debug\net10.0\OnlineCourseManagement.deps.json
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\bin\Debug\net10.0\OnlineCourseManagement.runtimeconfig.json
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\bin\Debug\net10.0\OnlineCourseManagement.dll
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\bin\Debug\net10.0\OnlineCourseManagement.pdb
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\obj\Debug\net10.0\OnlineCourseManagement.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\obj\Debug\net10.0\OnlineCourseManagement.AssemblyInfoInputs.cache
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\obj\Debug\net10.0\OnlineCourseManagement.AssemblyInfo.cs
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\obj\Debug\net10.0\OnlineCourseManagement.csproj.CoreCompileInputs.cache
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\obj\Debug\net10.0\OnlineCourseManagement.sourcelink.json
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\obj\Debug\net10.0\OnlineCourseManagement.dll
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\obj\Debug\net10.0\refint\OnlineCourseManagement.dll
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\obj\Debug\net10.0\OnlineCourseManagement.pdb
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\obj\Debug\net10.0\OnlineCourseManagement.genruntimeconfig.cache
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\obj\Debug\net10.0\ref\OnlineCourseManagement.dll
+C:\Users\Ahmed\source\repos\OnlineCourseManagement\OnlineCourseManagement\obj\Debug\net10.0\OnlineCo.0DB0A44B.Up2Date
