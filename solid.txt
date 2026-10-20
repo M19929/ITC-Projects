@@ -1,0 +1,86 @@
+
+using System;
+using System.Collections.Generic;
+
+namespace OnlineCourseManagementSystem
+{
+    public class Instructor
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Specialization { get; set; }
+        public decimal Salary { get; set; }
+        public List<string> Courses { get; set; }
+
+        public Instructor()
+        {
+            Courses = new List<string>();
+        }
+
+        public Instructor(int id, string name, string email,
+            string specialization, decimal salary)
+        {
+            Id = id;
+            Name = name;
+            Email = email;
+            Specialization = specialization;
+            Salary = salary;
+            Courses = new List<string>();
+        }
+    }
+
+    public interface IInstructorDisplay
+    {
+        void ShowInfo(Instructor instructor);
+    }
+
+    public class InstructorDisplay : IInstructorDisplay
+    {
+        public void ShowInfo(Instructor instructor)
+        {
+            Console.WriteLine("========== Instructor Info ==========");
+            Console.WriteLine($"ID             : {instructor.Id}");
+            Console.WriteLine($"Name           : {instructor.Name}");
+            Console.WriteLine($"Email          : {instructor.Email}");
+            Console.WriteLine($"Specialization : {instructor.Specialization}");
+            Console.WriteLine($"Salary         : {instructor.Salary}");
+            Console.WriteLine("Courses:");
+
+            if (instructor.Courses.Count == 0)
+            {
+                Console.WriteLine("  - No courses assigned yet");
+            }
+            else
+            {
+                foreach (var course in instructor.Courses)
+                {
+                    Console.WriteLine($"  - {course}");
+                }
+            }
+
+            Console.WriteLine("=====================================");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Instructor instructor = new Instructor(
+                1,
+                "Ahmed",
+                "ahmed@test.com",
+                "Programming",
+                5000
+            );
+
+            instructor.Courses.Add("C#");
+        
+
+            IInstructorDisplay display = new InstructorDisplay();
+            display.ShowInfo(instructor);
+        }
+    }
+}
+```
